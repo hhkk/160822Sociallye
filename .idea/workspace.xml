@@ -2,11 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a573ee1e-b50d-4ef3-87cd-123828312e1f" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/both/collections/parties.collection.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/imports/fixtures/parties.ts" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/server/main.ts" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/app.component.ts" afterPath="$PROJECT_DIR$/client/app.component.ts" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server/main.ts" afterPath="$PROJECT_DIR$/server/main.ts" />
     </list>
     <ignored path="160822Sociallye.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -46,6 +43,7 @@
               <folding>
                 <element signature="e#0#42#0" expanded="true" />
                 <marker date="1472003751093" expanded="true" signature="367:372" ph="{...}" />
+                <marker date="1472003751093" expanded="true" signature="367:374" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -65,7 +63,7 @@
         <entry file="file://$PROJECT_DIR$/server/main.ts">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="154">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -735,12 +733,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1471818864038</updated>
-      <workItem from="1471818866912" duration="5318000" />
+      <workItem from="1471818866912" duration="6055000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="5318000" />
+    <option name="totallyTimeSpent" value="6055000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -858,6 +856,7 @@
           <folding>
             <element signature="e#0#42#0" expanded="true" />
             <marker date="1472003751093" expanded="true" signature="367:372" ph="{...}" />
+            <marker date="1472003751093" expanded="true" signature="367:374" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -873,7 +872,7 @@
     <entry file="file://$PROJECT_DIR$/server/main.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="8" column="8" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
           <folding />
         </state>
       </provider>
