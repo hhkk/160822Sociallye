@@ -6,4 +6,3 @@ Meteor.startup(() => {
     loadParties();
 });
 
-// test 
