@@ -8,7 +8,8 @@ import template from './party-details.component.html';
 
 @Component({
     selector: 'party-details',
-  template
+    template,
+    directives: [ROUTER_DIRECTIVES]
 })
 export class PartyDetailsComponent implements OnInit {
     partyId: string;
@@ -44,3 +45,5 @@ export class PartyDetailsComponent implements OnInit {
 
     }
 }
+
+
