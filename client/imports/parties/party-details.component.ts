@@ -3,6 +3,7 @@ import { ActivatedRoute, ROUTER_DIRECTIVES } from '@angular/router';
 import { Tracker } from 'meteor/tracker';
 
 import { Parties } from '../../../both/collections/parties.collection';
+import { Party } from '../../../both/interfaces/party.interface';
 
 import template from './party-details.component.html';
 
@@ -13,7 +14,7 @@ import template from './party-details.component.html';
 })
 export class PartyDetailsComponent implements OnInit {
     partyId: string;
-    party: any;
+    party: Party;
 
     constructor(private route: ActivatedRoute, private ngZone: NgZone) {}
 
@@ -32,7 +33,6 @@ export class PartyDetailsComponent implements OnInit {
     }
 
     saveParty() {
-        console.log ('hk saving saveParty');
         Parties.update(this.party._id, {
             $set: {
                 name: this.party.name,
@@ -40,10 +40,5 @@ export class PartyDetailsComponent implements OnInit {
                 location: this.party.location
             }
         });
-        // hbk
-
-
     }
 }
-
-
