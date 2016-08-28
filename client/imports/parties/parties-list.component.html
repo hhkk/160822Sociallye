@@ -2,12 +2,10 @@
     <parties-form></parties-form>
 
     <ul>
-        HK
-        <li *ngFor="let party of parties; let i = index">
-            HK{{i}}
+    <li *ngFor="let party of parties">
             <a [routerLink]="['/party', party._id]">{{party.name}}</a>
-            <p>{{party.description}}</p>
-            <p>{{party.location}}</p>
+      <p>{{party.description}}</p>
+      <p>{{party.location}}</p>
             <button (click)="removeParty(party)">X</button>
         </li>
     </ul>
