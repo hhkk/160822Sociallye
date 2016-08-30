@@ -1,4 +1,4 @@
-simport {Mongo} from 'meteor/mongo';
+import {Mongo} from 'meteor/mongo';
 
 import {Party} from '../interfaces/party.interface';
 
