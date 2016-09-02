@@ -24,4 +24,3 @@ export function loadParties() {
         parties.forEach((party) => Parties.insert(party));
     }
 }
-
