@@ -38,7 +38,7 @@ export class PartiesFormComponent implements OnInit {
                 // XXX will be replaced by this.addForm.reset() in RC5+
                 this.resetForm();
             } else {
-                alert('Please log in to add a party');
+        alert('Please log in to add a party');
             }
         }
     }
