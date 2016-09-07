@@ -9,4 +9,3 @@ exports.Parties.allow({
     update: loggedIn,
     remove: loggedIn
 });
-//# sourceMappingURL=parties.collection.js.map

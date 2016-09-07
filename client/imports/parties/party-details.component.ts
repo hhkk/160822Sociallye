@@ -6,6 +6,8 @@ import { Meteor } from 'meteor/meteor';
 import { Parties } from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
 
+
+
 import template from './party-details.component.html';
 
 @Component({
@@ -13,6 +15,8 @@ import template from './party-details.component.html';
     template,
     directives: [ROUTER_DIRECTIVES]
 })
+
+
 export class PartyDetailsComponent implements OnInit {
     partyId: string;
     party: Party;
