@@ -6,11 +6,16 @@
   
     <login-buttons></login-buttons>
 
+    rrr{{username}}rrr
+
     <ul>
+        <p>xxx{{hbkhbk}}ttt</p>
         <li *ngFor="let party of parties">
             <a [routerLink]="['/party', party._id]">{{party.name}}</a>
             <p>{{party.description}}</p>
             <p>{{party.location}}</p>
+            <p>{{party.public}}</p>
+            <p>{{party.owner}}</p>
             <button (click)="removeParty(party)">X</button>
         </li>
     </ul>

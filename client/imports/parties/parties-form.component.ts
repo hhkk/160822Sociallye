@@ -20,8 +20,8 @@ export class PartiesFormComponent implements OnInit {
         this.addForm = this.formBuilder.group({
             name: ['', Validators.required],
             description: [],
-      location: ['', Validators.required],
-      public: [false]
+            location: ['', Validators.required],
+            public: [false]
         });
     }
 
@@ -29,10 +29,11 @@ export class PartiesFormComponent implements OnInit {
         this.addForm.controls['name']['updateValue']('');
         this.addForm.controls['description']['updateValue']('');
         this.addForm.controls['location']['updateValue']('');
-    this.addForm.controls['public']['updateValue'](false);
+        this.addForm.controls['public']['updateValue'](false);
     }
 
     addParty() {
+        alert ('in addparty');
         if (this.addForm.valid) {
             if (Meteor.userId()) {
                 Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
@@ -40,7 +41,7 @@ export class PartiesFormComponent implements OnInit {
                 // XXX will be replaced by this.addForm.reset() in RC5+
                 this.resetForm();
             } else {
-        alert('Please log in to add a party');
+                alert('Please log in to add a party');
             }
         }
     }

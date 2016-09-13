@@ -8,7 +8,10 @@
     <label>Location</label>
     <input type="text" [(ngModel)]="party.location" name="location">
 
-  <button type="submit">Save</button>
+    <label>Public from party-details.component.html</label>
+    <input type="text" [(ngModel)]="party.public" name="public">
+
+    <button type="submit">Save</button>
   <a [routerLink]="['/']">Cancel</a>
 
     <a [routerLink]="['/']">back to list</a><br>
