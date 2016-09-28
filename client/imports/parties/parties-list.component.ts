@@ -28,7 +28,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
   constructor() {
     super();
-    alert('pre assign');
+    //alert('pre assign');
     this.hbkhbk = 'hbkhbk4';
     //this.users = Meteor.users;
     //this.usernamehk = LoginButtons.prototype.displayName();
@@ -45,7 +45,12 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
     //console.log ('mu1:' + mu1);
     //var mu2 = Meteor.user();
     //console.log ('mu2:' + mu2);
-    this.hbkemail = Meteor.users.find().fetch()[0].emails[0].address;
+    try  {
+      //alert('pre Meteor.users.find().fetch()[0].emails[0].address');
+      this.hbkemail = Meteor.users.find().fetch()[0].emails[0].address;
+    } catch (e) {
+      //alert('exception during Meteor.users.find().fetch()[0].emails[0].address' + e);
+    }
     //this.hbkemail = 'ddd';
     //console.log ('xx:' + xx);
     //this.userhk = Meteor.users.findOne({"_id" : new Meteor.Collection.ObjectID("wAJeKr9op8vEt6FMH")});
@@ -64,11 +69,11 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   }
 
   ngOnInit() {
-      alert('hbk in parties-list.component.ts ngOnInit');
+      //alert('hbk in parties-list.component.ts ngOnInit');
     this.parties = Parties.find();
 
     this.subscribe('parties', () => {
-      alert('hbk in parties-list.component.ts this.subscribe ');
+      //alert('hbk in parties-list.component.ts this.subscribe ');
       this.parties = Parties.find();
     }, true);
   }
@@ -78,6 +83,21 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   }
 
   search(value: string) {
-    this.parties = Parties.find(value ? { location: value } : {});
+    alert('search for:' + value);
+    //this.parties = Parties.find(value ? { location: value } : {});
+  }
+
+  hktest (value: string) {
+    var usersFindFetch = Meteor.users.find().fetch();
+    this.hbkemail = usersFindFetch[0].emails[0].address;
+
+    console.log ('usersFindFetch[0]._id:' + usersFindFetch[0]._id);
+    console.log ('usersFindFetch[0].emails[0].address:' + usersFindFetch[0].emails[0].address);
+
+    for(var i in window)
+      if(window.hasOwnProperty(i))
+        console.log(i);
+
+    //alert('this.hbkemail:' + value + ':' + this.hbkemail);
   }
 }
