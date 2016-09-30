@@ -3,6 +3,7 @@ import { REACTIVE_FORM_DIRECTIVES, FormGroup, FormBuilder, Validators } from '@a
 import { Meteor } from 'meteor/meteor';
 
 import { Parties } from '../../../both/collections/parties.collection';
+import { Users2 } from '../../../both/collections/users2.collection';
 
 import template from './parties-form.component.html';
 
@@ -36,7 +37,12 @@ export class PartiesFormComponent implements OnInit {
         alert ('in addparty');
         if (this.addForm.valid) {
             if (Meteor.userId()) {
-                Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
+                //alert ('pre add party');
+                // Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
+                // works Parties.insert(Object.assign({}, this.addForm.value));
+                Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() },{hk:'yyzztt'}));
+                //alert ('post add party');
+                //works Users2.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
 
                 // XXX will be replaced by this.addForm.reset() in RC5+
                 this.resetForm();
