@@ -1,13 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 import { Mongo } from 'meteor/mongo';
-
+ q
 import { LoginButtons } from 'angular2-meteor-accounts-ui';
 import { MeteorComponent } from 'angular2-meteor';
 
 import { Parties }   from '../../../both/collections/parties.collection';
 import { Party } from '../../../both/interfaces/party.interface';
 import { PartiesFormComponent } from './parties-form.component';
+
+import { Users2 } from '../../../both/collections/users2.collection';
+
+
 
 import template from './parties-list.component.html';
 
@@ -21,6 +25,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   //alert('in assign');
   hbkhbk: string;
   hbkemail: string;
+  hbkuserid: string;
   userhk: Meteor.User;
   //users: Mongo.Collection;
   usernamehk: string;
@@ -84,19 +89,40 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
   search(value: string) {
     alert('search for:' + value);
-    //this.parties = Parties.find(value ? { location: value } : {});
+    this.parties = Parties.find(value ? { location: value } : {});
   }
+
+
+
 
   hktest (value: string) {
     var usersFindFetch = Meteor.users.find().fetch();
+    var usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
     this.hbkemail = usersFindFetch[0].emails[0].address;
+    this.hbkuserid =  Meteor.user()._id;
+    this.userhk = 1;
+    this.userhk = Meteor.user();
 
+
+    console.log ('usersFindFetch2[0]._id:' + usersFindFetch[0]._id);
     console.log ('usersFindFetch[0]._id:' + usersFindFetch[0]._id);
     console.log ('usersFindFetch[0].emails[0].address:' + usersFindFetch[0].emails[0].address);
 
-    for(var i in window)
-      if(window.hasOwnProperty(i))
+    for(var i in window) {
+      if (window.hasOwnProperty(i))
         console.log(i);
+    }
+
+    alert ('in addparty');
+
+    // if (Meteor.userId()) {
+       Parties.insert(Object.assign({}, {hhkk:'hhkkjj'}, { owner: Meteor.userId() }));
+    alert ('post addparty');
+    //
+    //   // XXX will be replaced by this.addForm.reset() in RC5+
+    // } else {
+    //   alert('Please log in to add a user');
+    // }
 
     //alert('this.hbkemail:' + value + ':' + this.hbkemail);
   }
