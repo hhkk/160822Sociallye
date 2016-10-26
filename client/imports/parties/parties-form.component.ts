@@ -4,6 +4,7 @@ import { Meteor } from 'meteor/meteor';
 
 import { Parties } from '../../../both/collections/parties.collection';
 import { Users2 } from '../../../both/collections/users2.collection';
+import { Party } from '../../../both/interfaces/party.interface';
 
 import template from './parties-form.component.html';
 
@@ -34,14 +35,23 @@ export class PartiesFormComponent implements OnInit {
     }
 
     addParty() {
-        alert ('in addparty');
+        alert ('in addparty 2');
         if (this.addForm.valid) {
             if (Meteor.userId()) {
-                //alert ('pre add party');
+                alert ('pre add party   2 ');
                 // Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
                 // works Parties.insert(Object.assign({}, this.addForm.value));
-                Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() },{hk:'yyzztt'}));
-                //alert ('post add party');
+                //Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() },{hk:'yyzztt'}));
+
+                var testObj = {a:'1',b:'2',c:'3'};
+                var testObj2 = {d:'1',e:'2',f:'3'};
+
+                Parties.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() },{hk:'yyzztt'},{bk:'byzztt'},{time:new Date()}));
+                //Parties.insert(Object.assign({}, {hk6:'hk2'}, testObj, testObj, testObj, testObj, testObj2, this.addForm.value, { owner: Meteor.userId() },{hk:'yyzztt'},{bk:'byzztt'},{time:new Date()}));
+                let p:Party = Parties.findOne({hk6:'hk2'});
+                console.log (p);
+
+                alert ('post add party2');
                 //works Users2.insert(Object.assign({}, this.addForm.value, { owner: Meteor.userId() }));
 
                 // XXX will be replaced by this.addForm.reset() in RC5+

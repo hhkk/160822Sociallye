@@ -10,9 +10,8 @@ import { PartiesFormComponent } from './parties-form.component';
 
 import { Users2 } from '../../../both/collections/users2.collection';
 
-
-
 import template from './parties-list.component.html';
+import {BothUtilGetMongoCollectionIterate} from "../../../both/utlities/BothUtilGetMongoCollectionIterate";
 
 @Component({
   selector: 'parties-list',
@@ -25,6 +24,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   hbkhbk: string;
   hbkemail: string;
   hbkuserid: string;
+  private hbkemailremote: string;
   userhk: Meteor.User;
   //users: Mongo.Collection;
   usernamehk: string;
@@ -74,11 +74,50 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
   ngOnInit() {
       //alert('hbk in parties-list.component.ts ngOnInit');
-    this.parties = Parties.find();
+    //this.parties = Parties.find();
 
-    this.subscribe('parties', () => {
-      //alert('hbk in parties-list.component.ts this.subscribe ');
-      this.parties = Parties.find();
+    // while(this.parties.hasNext()) {
+    //   item = this.parties.next();
+    //   console.log(item); // 9,2,5
+    // }
+
+    // this.parties.forEach( )
+    //var someArray = [9, 2, 5];
+    // for (var item of this.parties) {
+    //   console.log(item); // 9,2,5
+    // }
+
+
+    // this.parties.forEach(function(item) {
+    //   console.log(item); // 9,2,5
+    //   /* do something */
+    // });
+
+
+    // this.subscribe('partieshk22', () => {
+    //   //alert('hbk in hkparties22');
+    //   //this.parties = Parties.find();
+    // }, function(x) {
+    //   //alert('in partieshk22 ready' + arguments)
+    // });
+
+
+    // https://www.discovermeteor.com/blog/reactive-joins-in-meteor/
+    //Although most publications you’ll come across will usually return a single cursor, it
+    // turns out you can just as well return an array of cursors. So let’s try returning both
+    // a Post cursor and a Meteor.users cursor in the same publication:
+
+    // this.subscribe('parties', () => {
+    //   alert('hbk in parties-list.component.ts this.subscribe ');
+    //   this.parties = Parties.find();
+    // }, true);
+
+    this.subscribe('parties161014', (x) => {
+      alert('hbk in parties-list.component.ts parties161014 this.subscribe ');
+        this.parties = Parties.find();
+      console.log ('x:' + x);
+      console.log ('this:' + this);
+      console.log ('this.parties:' + this.parties);
     }, true);
   }
 
@@ -95,8 +134,17 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
 
   hktest (value: string) {
+
+    alert('pre BothUtilGetMongoCollectionIterate');
+    BothUtilGetMongoCollectionIterate.testGetParties();
+    alert('done BothUtilGetMongoCollectionIterate');
+
+    //this.hbkemailremote = GetEmailFromUserId.get(Meteor.user()._id);
+
+
     var usersFindFetch = Meteor.users.find().fetch();
     var usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
+    var usersFindFetch3email = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch()[0].emails[0].address;
     this.hbkemail = usersFindFetch[0].emails[0].address;
     this.hbkuserid =  Meteor.user()._id;
     this.userhk = 1;
@@ -115,7 +163,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
     alert ('in addparty');
 
     // if (Meteor.userId()) {
-       Parties.insert(Object.assign({}, {hhkk:'hhkkjj'}, { owner: Meteor.userId() }));
+    Parties.insert(Object.assign({}, {hhkk:'hhkkjj'}, { owner: Meteor.userId() }));
     alert ('post addparty');
     //
     //   // XXX will be replaced by this.addForm.reset() in RC5+

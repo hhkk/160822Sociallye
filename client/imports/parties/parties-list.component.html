@@ -8,18 +8,21 @@
 
     <login-buttons></login-buttons>
 
-    <br>hbkemail{{hbkemail}}hbkemail<br>
-    hbkuserid{{hbkuserid}}hbkuserid
+    <br>hbkemail{{hbkemail}}hbkemail
+    <br>hbkuserid{{hbkuserid}}hbkuserid
+    <br>usersFindFetch3email{{usersFindFetch3email}}usersFindFetch3email
+    <br>hbkemailremote{{hbkemailremote}}hbkemailremote
 
 
     <ul>
         <p>xxx{{hbkhbk}}ttt</p>
-        <li *ngFor="let party of parties">
+        <li *ngFor="let party of parties; let i = index">
             <a [routerLink]="['/party', party._id]">{{party.name}}</a>
-            <p>{{party.description}}</p>
-            <p>{{party.location}}</p>
-            <p>{{party.public}}</p>
-            <p>{{party.owner}}</p>
+            indx {{i}}</p>
+            desc {{party.description}}</p>
+            loc {{party.location}}</p>
+            public {{party.public}}</p>
+            owner {{party.owner}}</p>
             <button (click)="removeParty(party)">X</button>
         </li>
     </ul>
