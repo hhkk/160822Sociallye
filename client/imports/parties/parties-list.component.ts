@@ -12,6 +12,7 @@ import { Users2 } from '../../../both/collections/users2.collection';
 
 import template from './parties-list.component.html';
 import {BothUtilGetMongoCollectionIterate} from "../../../both/utlities/BothUtilGetMongoCollectionIterate";
+import {UtilErrorHandling} from "../../../both/utlities/UtilErrorHandling";
 
 @Component({
   selector: 'parties-list',
@@ -24,6 +25,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   hbkhbk: string;
   hbkemail: string;
   hbkuserid: string;
+  currentUsername: string;
   private hbkemailremote: string;
   userhk: Meteor.User;
   //users: Mongo.Collection;
@@ -53,10 +55,17 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
       //alert('pre Meteor.users.find().fetch()[0].emails[0].address');
       this.hbkemail = Meteor.users.find().fetch()[0].emails[0].address;
     } catch (e) {
-      //alert('exception during Meteor.users.find().fetch()[0].emails[0].address' + e);
+      alert('111 exception during Meteor.users.find().fetch()[0].emails[0].address' + e);
+    }
+    try  {
+      //alert('pre Meteor.users.find().fetch()[0].emails[0].address');
+      console.log ('this.hbkemail:' + this.hbkemail);
+    } catch (e) {
+      alert('222 exception during Meteor.users.find().fetch()[0].emails[0].address' + e);
     }
     //this.hbkemail = 'ddd';
     //console.log ('xx:' + xx);
+
     //this.userhk = Meteor.users.findOne({"_id" : new Meteor.Collection.ObjectID("wAJeKr9op8vEt6FMH")});
     //this.usernamehk2 = this.users.findOne({"_id" : ObjectId("wAJeKr9op8vEt6FMH")});
     //_id: ObjectId("4ecbe7f9e8c1c9092c000027")
@@ -115,7 +124,11 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
     this.subscribe('parties161014', (x) => {
       alert('hbk in parties-list.component.ts parties161014 this.subscribe ');
         this.parties = Parties.find();
-      console.log ('x:' + x);
+
+      let usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
+
+      console.log ('============ usersFindFetch2:' + usersFindFetch2);
+      console.log ('============ this.subscribe x:' + x);
       console.log ('this:' + this);
       console.log ('this.parties:' + this.parties);
     }, true);
@@ -135,21 +148,33 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
   hktest (value: string) {
 
-    alert('pre BothUtilGetMongoCollectionIterate');
+    //alert('pre BothUtilGetMongoCollectionIterate');
     BothUtilGetMongoCollectionIterate.testGetParties();
-    alert('done BothUtilGetMongoCollectionIterate');
+    //alert('done BothUtilGetMongoCollectionIterate');
 
     //this.hbkemailremote = GetEmailFromUserId.get(Meteor.user()._id);
 
+    var usersFindFetch = null;
+    var usersFindFetch2 = null;
+    var usersFindFetch3email = null;
 
-    var usersFindFetch = Meteor.users.find().fetch();
-    var usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
-    var usersFindFetch3email = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch()[0].emails[0].address;
-    this.hbkemail = usersFindFetch[0].emails[0].address;
-    this.hbkuserid =  Meteor.user()._id;
-    this.userhk = 1;
-    this.userhk = Meteor.user();
+    try {
+      usersFindFetch = Meteor.users.find().fetch();
+      usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
+      //usersFindFetch3email = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch()[0].emails[0].address;
+      this.hbkemail = usersFindFetch[0].emails[0].address;
+      this.hbkuserid =  Meteor.user()._id;
+      this.userhk = 1;
+      this.userhk = Meteor.user();
+      this.currentUsername = Meteor.user().username;
 
+
+    }
+  catch (e)
+    {
+//      console.error(e)
+      UtilErrorHandling.logError(e, true);
+    }
 
     console.log ('usersFindFetch2[0]._id:' + usersFindFetch[0]._id);
     console.log ('usersFindFetch[0]._id:' + usersFindFetch[0]._id);
@@ -160,11 +185,11 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
         console.log(i);
     }
 
-    alert ('in addparty');
+    //alert ('in addparty');
 
     // if (Meteor.userId()) {
     Parties.insert(Object.assign({}, {hhkk:'hhkkjj'}, { owner: Meteor.userId() }));
-    alert ('post addparty');
+    //alert ('post addparty');
     //
     //   // XXX will be replaced by this.addForm.reset() in RC5+
     // } else {

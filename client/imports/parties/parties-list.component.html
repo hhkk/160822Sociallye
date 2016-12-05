@@ -12,18 +12,19 @@
     <br>hbkuserid{{hbkuserid}}hbkuserid
     <br>usersFindFetch3email{{usersFindFetch3email}}usersFindFetch3email
     <br>hbkemailremote{{hbkemailremote}}hbkemailremote
+    <br>currentUsername{{currentUsername}}currentUsername
 
 
     <ul>
         <p>xxx{{hbkhbk}}ttt</p>
-        <li *ngFor="let party of parties; let i = index">
-            <a [routerLink]="['/party', party._id]">{{party.name}}</a>
+        <li *ngFor="let partyx of parties; let i = index">
+            <a [routerLink]="['/party', partyx._id]">{{partyx.name}}</a>
             indx {{i}}</p>
-            desc {{party.description}}</p>
-            loc {{party.location}}</p>
-            public {{party.public}}</p>
-            owner {{party.owner}}</p>
-            <button (click)="removeParty(party)">X</button>
+            desc {{partyx.description}}</p>
+            loc {{partyx.location}}</p>
+            public {{partyx.public}}</p>
+            owner {{partyx.owner}}</p>
+            <button (click)="removeParty(party)">X</button>s
         </li>
     </ul>
 </div>
