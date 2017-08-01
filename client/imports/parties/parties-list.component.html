@@ -4,10 +4,12 @@
   <input type="text" #searchtext placeholder="Search by Location">
     <button type="button" (click)="search(searchtext.value)">Search</button>
 
-    <button type="button" (click)="hktest('hi mom sent  ')">hktest</button>
+    <button type="button" (click)="hbktest('hi mom sent  ')">hktest2</button>
 
     <login-buttons></login-buttons>
 
+    <br>idxhbk{{idxhbk}}idxhbk
+    <br>idxhbkInstance2{{idxhbkInstance}}idxhbkInstance2
     <br>hbkemail{{hbkemail}}hbkemail
     <br>hbkuserid{{hbkuserid}}hbkuserid
     <br>usersFindFetch3email{{usersFindFetch3email}}usersFindFetch3email
@@ -24,7 +26,7 @@
             loc {{partyx.location}}</p>
             public {{partyx.public}}</p>
             owner {{partyx.owner}}</p>
-            <button (click)="removeParty(party)">X</button>s
+            <button (click)="removeParty(partyx)">X</button>s
         </li>
     </ul>
 </div>

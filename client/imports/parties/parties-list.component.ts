@@ -28,6 +28,10 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   currentUsername: string;
   private hbkemailremote: string;
   userhk: Meteor.User;
+  idxhbk: number;
+  idxhbkArray:any;
+  idxhbkInstance: String;
+
   //users: Mongo.Collection;
   usernamehk: string;
   usernamehk2: string;
@@ -55,7 +59,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
       //alert('pre Meteor.users.find().fetch()[0].emails[0].address');
       this.hbkemail = Meteor.users.find().fetch()[0].emails[0].address;
     } catch (e) {
-      alert('111 exception during Meteor.users.find().fetch()[0].emails[0].address' + e);
+      //console.log ('111 exception during Meteor.users.find().fetch()[0].emails[0].address' + e);
     }
     try  {
       //alert('pre Meteor.users.find().fetch()[0].emails[0].address');
@@ -77,12 +81,15 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
     Meteor.users.find({})
     //this.usernamehk = Meteor.User;
+    this.idxhbk = 1;
+    this.idxhbkArray = ["1arr", "2arr"];
+    //alert('this.idxhbkArray[this.idxhbk]:' + this.idxhbkArray[this.idxhbk]);
 
     //alert('post assign');
   }
 
   ngOnInit() {
-      //alert('hbk in parties-list.component.ts ngOnInit');
+    //alert('hbk in parties-list.component.ts ngOnInit');
     //this.parties = Parties.find();
 
     // while(this.parties.hasNext()) {
@@ -121,9 +128,10 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
     //   this.parties = Parties.find();
     // }, true);
 
+    console.log ('_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+_+');
     this.subscribe('parties161014', (x) => {
       alert('hbk in parties-list.component.ts parties161014 this.subscribe ');
-        this.parties = Parties.find();
+      this.parties = Parties.find();
 
       let usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
 
@@ -135,6 +143,8 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
   }
 
   removeParty(party) {
+    console.log ('hkhkhk:party:'+party)
+    console.log ('hkhkhk:party._id:'+party._id)
     Parties.remove(party._id);
   }
 
@@ -146,9 +156,14 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
 
 
-  hktest (value: string) {
+  //var idxhbk = 1;
+  //var words = ["hello", "yes", "no", "maybe"];
 
-    //alert('pre BothUtilGetMongoCollectionIterate');
+  hbktest (value: string) {
+
+    this.idxhbk++
+    this.idxhbkInstance = this.idxhbkArray[this.idxhbk % 2];
+
     BothUtilGetMongoCollectionIterate.testGetParties();
     //alert('done BothUtilGetMongoCollectionIterate');
 
@@ -162,7 +177,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
       usersFindFetch = Meteor.users.find().fetch();
       usersFindFetch2 = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch();
       //usersFindFetch3email = Meteor.users.find({_id:'wAJeKr9op8vEt6FMH'}).fetch()[0].emails[0].address;
-      this.hbkemail = usersFindFetch[0].emails[0].address;
+    this.hbkemail = 'asdasd:' + usersFindFetch[0].emails[0].address;
       this.hbkuserid =  Meteor.user()._id;
       this.userhk = 1;
       this.userhk = Meteor.user();
@@ -170,7 +185,7 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
 
 
     }
-  catch (e)
+    catch (e)
     {
 //      console.error(e)
       UtilErrorHandling.logError(e, true);
@@ -196,6 +211,11 @@ export class PartiesListComponent extends MeteorComponent implements OnInit {
     //   alert('Please log in to add a user');
     // }
 
+    //alert('1this.idxhbkArray:' + this.idxhbkArray);
+    //alert('2this.idxhbk % 2:' + this.idxhbk % 2);
+    //alert('3this.idxhbkArray[1]:' + this.idxhbkArray[1]);
+    //alert('4this.idxhbkArray[this.idxhbk]:' + this.idxhbkArray[this.idxhbk % 2]);
+
     //alert('this.hbkemail:' + value + ':' + this.hbkemail);
-  }
+  } // hbktest
 }
