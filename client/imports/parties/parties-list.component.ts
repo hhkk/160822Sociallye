@@ -10,6 +10,8 @@ import { PartiesFormComponent } from './parties-form.component';
 
 import { Users2 } from '../../../both/collections/users2.collection';
 
+
+
 import template from './parties-list.component.html';
 import {BothUtilGetMongoCollectionIterate} from "../../../both/utlities/BothUtilGetMongoCollectionIterate";
 import {UtilErrorHandling} from "../../../both/utlities/UtilErrorHandling";
